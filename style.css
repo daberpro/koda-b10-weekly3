@@ -86,6 +86,8 @@ body,html{
 .bg-light-orange-secondary{background-color: var(--light-orange-secondary);}
 .bg-light-orange-third{background-color: var(--light-orange-third);}
 
+.border-blue{border: 1px solid var(--blue-third);}
+.border-orange{border: 1px solid var(--orange-third)}
 .border-bottom-default{border-bottom:1px solid var(--border-color);}
 .border-top-default{border-top:1px solid var(--border-color);}
 .border-left-default{border-left:1px solid var(--border-color);}
@@ -130,12 +132,14 @@ body,html{
 .decoration-none{text-decoration:none;}
 .text-upper{text-transform: uppercase;}
 
-
+.text-color-blue{color: var(--blue);}
+.text-color-orange{color: var(--orange);}
 .text-color-default-light{color: var(--light-default-text-color);}
 .text-color-default{color:var(--default-text-color);}
 .text-color-white{color:#fff;}
 .text-color-primary{color: var(--primary-color)}
 
+.font-size-half{font-size: 0.5rem;}
 .font-size-1{font-size:1rem;}
 .font-size-1fourth{font-size:1.25rem;}
 .font-size-1half{font-size:1.5rem;}
