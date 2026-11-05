@@ -21,6 +21,9 @@
     --light-orange-secondary: #F4EFE4;
     --light-orange-third: #E8E0D1;
 
+    --red: #A33F31;
+    --red-secondary: #F9EAE5;
+    --red-third: #A33F3147;
 
 }
 
@@ -69,6 +72,19 @@ body,html{
 .flex-row{flex-direction:row;}
 .flex-column{flex-direction:column;}
 
+.bg-red{background-color: var(--red);}
+.bg-red-secondary{background-color: var(--red-secondary);}
+.bg-red-third{background-color: var(--red-third);}
+
+.bg-light-tp01{background-color: rgba(255,255,255,0.1);}
+.bg-light-tp025{background-color: rgba(255,255,255,0.25);}
+.bg-light-tp05{background-color: rgba(255,255,255,0.50);}
+.bg-light-tp075{background-color: rgba(255,255,255,0.75);}
+
+.bg-dark-tp01{background-color: rgba(0,0,0,0.1);}
+.bg-dark-tp025{background-color: rgba(0,0,0,0.25);}
+.bg-dark-tp05{background-color: rgba(0,0,0,0.50);}
+.bg-dark-tp075{background-color: rgba(0,0,0,0.75);}
 .bg-main-color{background-color:var(--main-backrgound-color);}
 .bg-primary{background-color:var(--primary-color);}
 .bg-secondary{background-color:var(--secondary-color);}
@@ -86,6 +102,7 @@ body,html{
 .bg-light-orange-secondary{background-color: var(--light-orange-secondary);}
 .bg-light-orange-third{background-color: var(--light-orange-third);}
 
+.border-red{border: 1px solid var(--red-third);}
 .border-blue{border: 1px solid var(--blue-third);}
 .border-orange{border: 1px solid var(--orange-third)}
 .border-bottom-default{border-bottom:1px solid var(--border-color);}
@@ -111,6 +128,7 @@ body,html{
 
 .height-4{height: 4rem;}
 .height-8{height: 8rem;}
+.height-10{height: 10rem;}
 .height-12{height: 12rem;}
 
 .gap-half{gap:.5rem;}
@@ -128,10 +146,13 @@ body,html{
 .weight-800{font-weight:800;}
 .weight-900{font-weight:900;}
 
+
 .list-style-none{list-style: none;}
 .decoration-none{text-decoration:none;}
 .text-upper{text-transform: uppercase;}
 
+.text-color-black{color: black;}
+.text-color-red{color: var(--red);}
 .text-color-blue{color: var(--blue);}
 .text-color-orange{color: var(--orange);}
 .text-color-default-light{color: var(--light-default-text-color);}
@@ -261,4 +282,12 @@ nav{
 
 .custom-grid-live-feed-reports {
     grid-template-columns: 100%;
+}
+
+.live-feed-report-cards > div:first-child{
+    border-radius: 1rem 1rem 0 0;
+}
+
+.live-feed-report-cards > div:last-child{
+    border-radius: 0 0 1rem 1rem;
 }
