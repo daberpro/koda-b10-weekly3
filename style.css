@@ -259,3 +259,6 @@ nav{
     grid-template-columns: repeat(2,50%);
 }
 
+.custom-grid-live-feed-reports {
+    grid-template-columns: 100%;
+}
