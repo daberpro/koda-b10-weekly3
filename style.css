@@ -72,6 +72,7 @@ body,html{
 .flex-row{flex-direction:row;}
 .flex-column{flex-direction:column;}
 
+.bg-empty-video{background-color: #13231B;}
 .bg-red{background-color: var(--red);}
 .bg-red-secondary{background-color: var(--red-secondary);}
 .bg-red-third{background-color: var(--red-third);}
@@ -309,6 +310,9 @@ body,html{
 .radius-br-2{border-bottom-right-radius: 2rem;}
 .radius-br-2half{border-bottom-right-radius: 2.5rem;}
 
+.object-fit-contain{object-fit: contain;}
+.object-fit-cover{object-fit: cover;}
+.object-fit-fill{object-fit: fill;}
 
 .cursor-pointer{cursor: pointer;}
 
@@ -345,4 +349,13 @@ nav{
 
 .service-category{
     grid-template-columns: 50% 50%;
+}
+
+.card-media{
+    min-height: 300px;
+}
+
+.video-timer {
+    bottom: 1rem;
+    right: 1rem;
 }
