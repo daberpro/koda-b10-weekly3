@@ -170,6 +170,7 @@ body,html{
 .text-color-primary{color: var(--primary-color)}
 
 .font-size-half{font-size: 0.5rem;}
+.font-size-075rem{font-size: 0.75rem;}
 .font-size-1{font-size:1rem;}
 .font-size-1fourth{font-size:1.25rem;}
 .font-size-1half{font-size:1.5rem;}

@@ -723,19 +723,19 @@
             <div
                 class="bg-third pad-1half width-full radius-bl-1 radius-br-1 display-flex items-center content-center flex-column gap-1">
                 <div class="width-full display-flex items-center content-between flex-row gap-1">
-                    <button
-                        class="width-half bg-primary text-color-white public-sans-font weight-400 cursor-pointer pad-1 border-none outline-none font-size-1 radius-1half">Sign
-                        In Existing Account</button>
-                    <button
-                        class="width-half bg-main-color public-sans-font weight-400 cursor-pointer text-color-default pad-1 border-default outline-none font-size-1 radius-1half">Register
-                        as Citizen</button>
+                    <a  href="signin.html"
+                        class="width-half bg-primary decoration-none display-flex content-center items-center text-color-white public-sans-font weight-400 cursor-pointer pad-1 border-none outline-none font-size-1 radius-1half">Sign
+                        In Existing Account</a>
+                    <a  href="register.html"
+                        class="width-half decoration-none display-flex content-center items-center bg-main-color public-sans-font weight-400 cursor-pointer text-color-default pad-1 border-default outline-none font-size-1 radius-1half">Register
+                        as Citizen</a>
                 </div>
 
                 <form class="width-full display-flex items-center content-center flex-column gap-1" action="">
                     <div class="display-flex content-start items-center flex-column gap-1 width-full">
                         <label
                             class="ibm-plex-mono-font width-full text-color-default weight-400 text-upper font-size-1"
-                            for="complain-id">Email Address</label>
+                            for="email">Email Address</label>
                         <div
                             class="width-full display-flex items-center content-between flex-row bg-third border-default radius-1">
                             <svg class="text-color-default m-x-1" width="1em" height="1em" viewBox="0 0 14 14"
@@ -748,14 +748,14 @@
                                     stroke-linecap="round" stroke-linejoin="round" stroke="currentColor" />
                             </svg>
 
-                            <input placeholder="Enter your email" id="complain-id" type="text"
+                            <input placeholder="Enter your email" id="email" type="text"
                                 class="bg-third flex-grow-1 border-none radius-1 pad-y-1 text-color-default font-size-1 public-sans-font weight-400 outline-none">
                         </div>
                     </div>
                     <div class="display-flex content-start items-center flex-column gap-1 width-full">
                         <label
                             class="ibm-plex-mono-font text-color-default width-full weight-400 text-upper font-size-1"
-                            for="complain-id">Password</label>
+                            for="password">Password</label>
                         <div
                             class="width-full display-flex items-center content-between flex-row bg-third border-default radius-1">
                             <svg class="text-color-default m-x-1" width="1em" height="1em" viewBox="0 0 14 14"
@@ -777,7 +777,7 @@
                                 </defs>
                             </svg>
 
-                            <input placeholder="Enter your email" id="complain-id" type="text"
+                            <input placeholder="Enter your email" id="password" type="text"
                                 class="bg-third flex-grow-1 border-none radius-1 pad-y-1 text-color-default font-size-1 public-sans-font weight-400 outline-none">
 
                             <svg class="text-color-default m-x-1 font-size-1fourth" width="1em" height="1em" viewBox="0 0 16 16" fill="none"
