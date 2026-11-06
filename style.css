@@ -102,6 +102,7 @@ body,html{
 .bg-light-orange-secondary{background-color: var(--light-orange-secondary);}
 .bg-light-orange-third{background-color: var(--light-orange-third);}
 
+.border-dashed-default{border: 1px dashed var(--border-color);}
 .border-red{border: 1px solid var(--red-third);}
 .border-blue{border: 1px solid var(--blue-third);}
 .border-orange{border: 1px solid var(--orange-third)}
@@ -112,6 +113,11 @@ body,html{
 .border-default{border:1px solid var(--border-color);}
 .border-none{border: none;}
 .border-primary{border: 1px solid var(--primary-color);}
+
+.border-width-1{border-width: 0.25rem;}
+.border-width-2{border-width: 0.5rem;}
+.border-width-3{border-width: 0.75rem;}
+.border-width-4{border-width: 1rem;}
 
 .width-full{width:100%;}
 .width-90percent{width:90%;}
@@ -335,4 +341,8 @@ nav{
 
 .modal-form{
     width: 700px;
+}
+
+.service-category{
+    grid-template-columns: 50% 50%;
 }
