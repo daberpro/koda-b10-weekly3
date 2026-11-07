@@ -330,13 +330,6 @@ nav{
     grid-template-columns: 100%;
 }
 
-.live-feed-report-cards > div:first-child{
-    border-radius: 1rem 1rem 0 0;
-}
-
-.live-feed-report-cards > div:last-child{
-    border-radius: 0 0 1rem 1rem;
-}
 
 .container-modal{
     top: 0;
