@@ -129,10 +129,13 @@ body,html{
 .width-70percent{width:70%;}
 .width-half{width:50%;}
 .width-third{width:30%;}
+.width-fourth{width:25%;}
 .width-fit{width:fit-content;}
 
 .height-full{height:100%;}
 .height-fit{height:fit-content;}
+
+.flex-wrap{flex-wrap: wrap;}
 
 .flex-grow-1{flex-grow: 1;}
 .flex-grow-2{flex-grow: 2;}
@@ -219,6 +222,10 @@ body,html{
 .text-color-default{color:var(--default-text-color);}
 .text-color-white{color:#fff;}
 .text-color-primary{color: var(--primary-color)}
+
+.text-center{text-align: center;}
+.text-start{text-align: start;}
+.text-end{text-align: end;}
 
 .font-size-half{font-size: 0.5rem;}
 .font-size-075rem{font-size: 0.75rem;}
