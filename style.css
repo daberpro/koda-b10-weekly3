@@ -446,6 +446,14 @@ body,html{
         flex-direction: column;
         align-items: start;
     }
+
+    .md-flex-column{
+        flex-direction: column;
+    }
+
+    .md-width-full{
+        width: 100%;
+    }
 }
 
 @media (width >= 0px) and (width < 1400px){
