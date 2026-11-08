@@ -458,6 +458,18 @@ body,html{
     .md-width-90percent{
         width: 90%;
     }
+
+    .md-height-90percent{
+        height: 90%;
+    }
+
+    .md-content-start{
+        justify-content: start;
+    }
+
+    .md-overflow-y-scroll{
+        overflow-y: scroll;
+    }
 }
 
 @media (width >= 0px) and (width < 1400px){

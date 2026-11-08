@@ -10,14 +10,14 @@
 
 <body>
 
-    <nav class="display-flex content-center items-center flex-row width-full border-bottom-default">
+    <nav class="navbar display-flex height-4 content-center items-center flex-row width-full border-bottom-default">
         <div class="width-90percent display-flex content-between items-center height-full">
             <a href="index.html"
                 class="width-fit text-color-black decoration-none height-full display-flex content-start items-center flex-row gap-1">
                 <img src="assets/icons/logo.svg" alt="logo">
                 <span class="fraunces-font weight-700 font-size-1">Warga Report</span>
             </a>
-            <div class="width-fit height-full display-flex content-center items-center flex-row">
+            <div class="navbar-menu width-fit height-full display-flex content-center items-center flex-row">
                 <div class="display-flex content-center items-center gap-1">
                     <a class="decoration-none text-color-default font-size-1 pad-y-half pad-x-1half"
                         href="live-feed.html">Live
@@ -132,7 +132,7 @@
                     Track a case
                 </button>
             </div>
-            <div class="statistic-report display-flex content-start items-center flex-row m-t-2">
+            <div class="statistic-report display-flex content-start items-center width-full flex-row m-t-2">
                 <p
                     class="ibm-plex-mono-font text-color-default weight-400 display-flex content-center items-center flex-row pad-x-1 gap-1">
                     <span class="weight-600">48</span>
@@ -154,7 +154,7 @@
         </div>
 
         <div
-            class="display-flex content-center items-center flex-row m-t-3 width-90percent border-top-default pad-t-2 gap-1">
+            class="display-flex card-container-homepage content-center items-center flex-row m-t-3 width-90percent border-top-default pad-t-2 gap-1">
             <div
                 class="gap-half-rem display-flex content-start items-center flex-column bg-third border-default radius-2 pad-1half gap-1">
                 <div class="display-flex content-start items-center flex-row width-full">
@@ -169,7 +169,6 @@
                     </p>
                 </div>
             </div>
-
             <div
                 class="gap-half-rem display-flex content-start items-center flex-column bg-third border-default radius-2 pad-1half gap-1">
                 <div class="display-flex content-start items-center flex-row width-full">
@@ -236,7 +235,7 @@
             <div class="display-grid content-center items-center custom-grid-main-reports gap-1 width-full m-t-2">
 
                 <div
-                    class="height-12 display-flex content-start items-center bg-third border-default radius-1 pad-1half flex-row gap-1">
+                    class="height-12 xxxl-items-start xxxl-height-fit display-flex content-start items-center bg-third border-default radius-1 pad-1half flex-row gap-1">
                     <div class="display-flex height-full content-start items-center flex-column">
                         <img class="radius-1" src="assets/images/Background+Border.png" alt="">
                     </div>
@@ -331,9 +330,9 @@
                 </div>
 
                 <div
-                    class="height-12 display-flex content-start items-center bg-third border-default radius-1 pad-1half flex-row gap-1">
+                    class="height-12 xxxl-items-start xxxl-height-fit display-flex content-start items-center bg-third border-default radius-1 pad-1half flex-row gap-1">
                     <div class="display-flex height-full content-start items-center flex-column">
-                        <img class="radius-1 pad-b-1half" src="assets/images/Background+Border (1).png" alt="">
+                        <img class="radius-1" src="assets/images/Background+Border (1).png" alt="">
                     </div>
                     <div class="display-flex content-start items-center flex-column height-full flex-grow-1 gap-half">
 
@@ -438,9 +437,9 @@
                 </div>
 
                 <div
-                    class="height-12 display-flex content-start items-center bg-third border-default radius-1 pad-1half flex-row gap-1">
+                    class="height-12 xxxl-items-start xxxl-height-fit display-flex content-start items-center bg-third border-default radius-1 pad-1half flex-row gap-1">
                     <div class="display-flex height-full content-start items-center flex-column">
-                        <img class="radius-1 pad-b-1half" src="assets/images/Background+Border (2).png" alt="">
+                        <img class="radius-1" src="assets/images/Background+Border (2).png" alt="">
                     </div>
                     <div class="display-flex content-start items-center flex-column height-full flex-grow-1 gap-half">
 
@@ -535,9 +534,9 @@
                 </div>
 
                 <div
-                    class="height-12 display-flex content-start items-center bg-third border-default radius-1 pad-1half flex-row gap-1">
+                    class="height-12 xxxl-items-start xxxl-height-fit display-flex content-start items-center bg-third border-default radius-1 pad-1half flex-row gap-1">
                     <div class="display-flex height-full content-start items-center flex-column">
-                        <img class="radius-1 pad-b-1half" src="assets/images/Background+Border (3).png" alt="">
+                        <img class="radius-1" src="assets/images/Background+Border (3).png" alt="">
                     </div>
                     <div class="display-flex content-start items-center flex-column height-full flex-grow-1 gap-half">
 
@@ -635,7 +634,7 @@
     </main>
 
     <footer class="width-full display-flex content-center items-center flex-column border-top-default">
-        <div class="width-90percent display-flex content-center items-center flex-row pad-y-2">
+        <div class="footer-items width-90percent display-flex content-center items-center flex-row pad-y-2">
 
             <div class="display-flex content-center items-start flex-column width-half gap-1fourth">
                 <span class="fraunces-font weight-600 font-size-1half">WargaReport</span>
@@ -695,11 +694,10 @@
             <span>UU No. 25/2009 Compliant</span>
         </div>
     </footer>
-
     <div
         class="width-full height-full position-fix z-i20 bg-dark-tp075 container-modal display-flex items-center content-center flex-column">
 
-        <div class="radius-1 modal-form border-default display-flex items-center content-center flex-column">
+        <div class="radius-1 md-width-90percent md-height-90percent md-overflow-y-scroll md-content-start modal-form border-default display-flex items-center content-center flex-column">
             <div
                 class="pad-1half width-full bg-main-color radius-tl-1 radius-tr-1 display-flex items-start content-between flex-row">
                 <div class="display-flex width-70percent items-start content-center flex-column gap-half">
@@ -759,7 +757,7 @@
                     </div>
 
 
-                    <div class="display-flex items-center content-between flex-row gap-1 width-full">
+                    <div class="display-flex md-flex-column items-center content-between flex-row gap-1 width-full">
                         <div class="display-flex content-start items-center flex-column gap-1 width-full">
                             <label
                                 class="ibm-plex-mono-font width-full text-color-default weight-400 text-upper font-size-1"
@@ -851,7 +849,8 @@
                     </div>
                     <button type="submit"
                         class="bg-primary text-color-white pad-1 public-sans-font weight-600 font-size-1 border-none outline-none radius-1half width-full display-flex items-center content-center flex-row gap-half">
-                        <svg width="1em" height="1em" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="1em" height="1em" viewBox="0 0 13 13" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_199_513)">
                                 <path
                                     d="M11.9167 6.0017V6.50003C11.916 7.66809 11.5378 8.80464 10.8384 9.74018C10.139 10.6757 9.15599 11.3601 8.03586 11.6913C6.91573 12.0225 5.71856 11.9827 4.62288 11.5779C3.5272 11.1731 2.59173 10.425 1.95598 9.44511C1.32023 8.46521 1.01826 7.30606 1.09512 6.14053C1.17197 4.975 1.62353 3.86554 2.38244 2.97761C3.14136 2.08968 4.16697 1.47086 5.30631 1.21344C6.44565 0.956021 7.63769 1.07379 8.70463 1.5492"
@@ -875,7 +874,6 @@
         </div>
 
     </div>
-
 </body>
 
 </html>
