@@ -454,6 +454,10 @@ body,html{
     .md-width-full{
         width: 100%;
     }
+
+    .md-width-90percent{
+        width: 90%;
+    }
 }
 
 @media (width >= 0px) and (width < 1400px){
@@ -481,6 +485,7 @@ body,html{
     .xl-width-full{width: 100%;}
     .xl-pad-1{padding: 1rem;}
     .xl-content-start{justify-content: start;}
+    .xl-height-fit{height: fit-content;}
 
     footer > .footer-items{
         flex-direction: column;
@@ -522,6 +527,12 @@ body,html{
         padding: 1rem;
     }
     .xxxl-flex-column{flex-direction: column;}
+    .xxxl-height-fit{
+        height: fit-content;
+    }
+    .xxxl-items-start{
+        align-items: start;
+    }
 }
 
 /* XS */
