@@ -36,6 +36,7 @@ body,html{
     padding:0;
     box-sizing:border-box;
     font-family:sans-serif;
+    /* border: 1px solid rgba(255,0,0,0.25); */
 }
 
 .fraunces-font{
@@ -370,9 +371,6 @@ body,html{
 
 .outline-none{outline: none;}
 
-nav{
-    height:4.5rem;
-}
 
 .custom-grid-main-reports{
     grid-template-columns: repeat(2,50%);
@@ -404,3 +402,98 @@ nav{
     bottom: 1rem;
     right: 1rem;
 }
+
+/* XS - MD */
+@media (width >= 0px) and (width < 992px) {
+    
+    /* NAVBAR */
+    nav.navbar { 
+        padding: 1rem;
+        height: fit-content;
+    }
+    nav.navbar > div{flex-direction: column;}
+    nav.navbar > div > *{
+        width: 100%;
+        justify-content: start;
+    }
+    nav.navbar > div > .navbar-menu {
+        justify-content: start;
+        width: 100%;
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+        padding: 1rem 0px;
+        margin: 1rem 0px;
+    }
+    nav.navbar > div > .navbar-menu > div {
+        flex-direction: column;
+    }
+
+    nav.navbar > div > .navbar-menu > div > a{
+        width: 100%;
+    }
+
+    /* END NAVBAR */
+
+}
+
+@media (width >= 0px) and (width < 768px){
+    .statistic-report {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .custom-grid-main-reports > div{
+        flex-direction: column;
+        align-items: start;
+    }
+}
+
+@media (width >= 0px) and (width < 1400px){
+    .custom-grid-main-reports {
+        grid-template-columns: 100%;
+    }
+
+    .custom-grid-main-reports > div{
+        height: fit-content;
+    }
+
+    .card-container-homepage{
+        flex-direction: column;
+    }
+
+    .card-container-homepage > div{
+        width: 100%;
+    }
+}
+
+@media (width >= 0px) and (width < 1024px) {
+
+    footer > .footer-items{
+        flex-direction: column;
+    }
+
+    footer > .footer-items > div{
+        width: 100%;
+    }
+
+}
+
+/* XS */
+@media (width >= 0px) and (width < 576px) { }
+
+/* S */
+@media (width >= 576px) and (width < 768px) { }
+
+/* MD */
+@media (width >= 768px) and (width < 992px) {
+    
+}
+
+/* LG */
+@media (width >= 992px) and (width < 1200px) { }
+
+/* XL */
+@media (width >= 1200px) and (width < 1400px) { }
+
+/* XXl */
+@media (width >= 1400px) { }
