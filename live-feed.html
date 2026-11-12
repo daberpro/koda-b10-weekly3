@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Warga Report</title>
     <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 
 <body>
-
+    
     <nav class="navbar display-flex height-4 content-center items-center flex-row width-full border-bottom-default">
         <div class="width-90percent display-flex content-between items-center height-full">
             <a href="index.html"
@@ -31,7 +32,9 @@
             </div>
             <div class="width-fit height-full display-flex content-end items-center flex-row">
 
-                <a class="width-fit height-fit text-color-default decoration-none" href="signin.html">
+                <button id="signin"
+                    class="width-fit bg-transparent outline-none border-none cursor-pointer height-fit text-color-default decoration-none"
+                    href="signin.html">
                     <div class="pad-y-half pad-x-1half gap-half display-flex content-center items-center">
                         <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
@@ -52,7 +55,7 @@
 
                         <span class="public-sans-font font-size-1">Signin</span>
                     </div>
-                </a>
+                </button>
 
                 <a class="width-fit height-fit text-color-default decoration-none" href="">
                     <div
@@ -77,6 +80,17 @@
             </div>
         </div>
     </nav>
+    <script>
+
+        const modal = ModalLoginComponent();
+        document.body.appendChild(modal);
+        const signinButton = document.getElementById("signin");
+        signinButton.onclick = e => {
+            modal.classList.toggle("display-flex");
+            modal.classList.toggle("display-none");
+        };
+
+    </script>
 
     <main class="display-flex flex-column content-center items-center width-full bg-main-color pad-y-3">
 

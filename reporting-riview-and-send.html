@@ -10,14 +10,14 @@
 
 <body>
 
-    <nav class="display-flex content-center items-center flex-row width-full border-bottom-default">
+    <nav class="navbar display-flex height-4 content-center items-center flex-row width-full border-bottom-default">
         <div class="width-90percent display-flex content-between items-center height-full">
             <a href="index.html"
-                class="width-fit decoration-none text-color-black height-full display-flex content-start items-center flex-row gap-1">
+                class="width-fit text-color-black decoration-none height-full display-flex content-start items-center flex-row gap-1">
                 <img src="assets/icons/logo.svg" alt="logo">
                 <span class="fraunces-font weight-700 font-size-1">Warga Report</span>
             </a>
-            <div class="width-fit height-full display-flex content-center items-center flex-row">
+            <div class="navbar-menu width-fit height-full display-flex content-center items-center flex-row">
                 <div class="display-flex content-center items-center gap-1">
                     <a class="decoration-none text-color-default font-size-1 pad-y-half pad-x-1half"
                         href="live-feed.html">Live
@@ -27,11 +27,10 @@
                     <a class="decoration-none text-color-default font-size-1 pad-y-half pad-x-1half"
                         href="how-it-works.html">How it
                         works</a>
-                    <a class="decoration-none text-color-default font-size-1 pad-y-half pad-x-1half"
-                        href="how-it-works.html">My Reports</a>
                 </div>
             </div>
-            <div class="width-fit height-full display-flex content-end items-center flex-row gap-1">
+            <div
+                class="width-fit md-flex-column md-items-start height-full display-flex content-end items-center flex-row gap-1">
 
                 <button class="bg-transparent outline-none border-none">
                     <svg class="font-size-1fourth" width="1em" height="1em" viewBox="0 0 17 17" fill="none"
@@ -113,10 +112,10 @@
 
             <div class="width-full height-fit display-flex flex-column items-start content-center">
 
-                <div class="width-full height-fit display-flex flex-row items-start content-center">
+                <div class="width-full xl-flex-column height-fit display-flex flex-row items-start content-center">
 
                     <div
-                        class="width-third pad-1half flex-column gap-1 items-start content-center flex-column display-flex">
+                        class="width-third xl-width-full pad-1half flex-column gap-1 items-start content-center flex-column display-flex">
                         <span class="text-upper text-color-default font-size-1">Community Intake</span>
                         <h1 class="fraunces-font font-size-3half">Report an Issue</h1>
                         <p class="public-sans-font line-height-2 weight-400 text-color-default font-size-1fourth">
@@ -245,7 +244,7 @@
 
 
                     <div
-                        class="width-70percent display-flex items-start flex-column content-start height-fit pad-1half gap-1">
+                        class="width-70percent xl-width-full display-flex items-start flex-column content-start height-fit pad-1half gap-1">
 
                         <div
                             class="width-full display-flex items-start content-center flex-column bg-third pad-1half radius-1 border-default gap-1">
@@ -326,7 +325,7 @@
                                 </div>
                             </div>
 
-                            <div class="display-flex items-center content-between flex-row gap-1 width-full">
+                            <div class="display-flex md-flex-column items-center content-between flex-row gap-1 width-full">
                                 <div class="display-flex content-start items-center flex-column gap-1 width-full">
                                     <label
                                         class="ibm-plex-mono-font width-full text-color-default weight-400 text-upper font-size-1"
@@ -361,7 +360,7 @@
                                 </div>
                             </div>
 
-                            <div class="display-flex items-center content-between flex-row gap-1 width-full">
+                            <div class="display-flex md-flex-column items-center content-between flex-row gap-1 width-full">
                                 <div class="display-flex content-start items-center flex-column gap-1 width-full">
                                     <label
                                         class="ibm-plex-mono-font width-full text-color-default weight-400 text-upper font-size-1"
@@ -431,9 +430,9 @@
     </main>
 
     <footer class="width-full display-flex content-center items-center flex-column border-top-default">
-        <div class="width-90percent display-flex content-center items-center flex-row pad-y-2">
+        <div class="footer-items md-flex-column  width-90percent display-flex content-center items-center flex-row pad-y-2">
 
-            <div class="display-flex content-center items-start flex-column width-half gap-1fourth">
+            <div class="display-flex md-width-full content-center items-start flex-column width-half gap-1fourth">
                 <span class="fraunces-font weight-600 font-size-1half">WargaReport</span>
                 <p class="public-sans-font weight-400 text-color-default font-size-1 line-height-1half">
                     WargaReport is an independent civic reporting platform for
@@ -447,7 +446,7 @@
                 </p>
             </div>
 
-            <div class="display-flex content-around items-start flex-row width-half pad-y-2 height-full">
+            <div class="display-flex md-width-full content-around items-start flex-row width-half pad-y-2 height-full">
                 <div class="width-third display-flex content-start items-center flex-column gap-half">
                     <span class="ibm-plex-mono-font weight-500 width-full text-upper">Citizens</span>
                     <ul class="display-flex content-center items-start flex-column gap-half width-full">

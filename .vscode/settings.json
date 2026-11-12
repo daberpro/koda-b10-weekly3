@@ -1,3 +1,6 @@
 {
-    "css.styleSheets": ["**/*.css"]
+    "css.styleSheets": [
+        "**/*.css"
+    ],
+    "liveServer.settings.port": 5501
 }

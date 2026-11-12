@@ -10,14 +10,14 @@
 
 <body>
 
-    <nav class="display-flex content-center items-center flex-row width-full border-bottom-default">
+    <nav class="navbar display-flex height-4 content-center items-center flex-row width-full border-bottom-default">
         <div class="width-90percent display-flex content-between items-center height-full">
             <a href="index.html"
-                class="width-fit decoration-none text-color-black height-full display-flex content-start items-center flex-row gap-1">
+                class="width-fit text-color-black decoration-none height-full display-flex content-start items-center flex-row gap-1">
                 <img src="assets/icons/logo.svg" alt="logo">
                 <span class="fraunces-font weight-700 font-size-1">Warga Report</span>
             </a>
-            <div class="width-fit height-full display-flex content-center items-center flex-row">
+            <div class="navbar-menu width-fit height-full display-flex content-center items-center flex-row">
                 <div class="display-flex content-center items-center gap-1">
                     <a class="decoration-none text-color-default font-size-1 pad-y-half pad-x-1half"
                         href="live-feed.html">Live
@@ -27,11 +27,10 @@
                     <a class="decoration-none text-color-default font-size-1 pad-y-half pad-x-1half"
                         href="how-it-works.html">How it
                         works</a>
-                    <a class="decoration-none text-color-default font-size-1 pad-y-half pad-x-1half"
-                        href="how-it-works.html">My Reports</a>
                 </div>
             </div>
-            <div class="width-fit height-full display-flex content-end items-center flex-row gap-1">
+            <div
+                class="width-fit md-flex-column md-items-start height-full display-flex content-end items-center flex-row gap-1">
 
                 <button class="bg-transparent outline-none border-none">
                     <svg class="font-size-1fourth" width="1em" height="1em" viewBox="0 0 17 17" fill="none"
@@ -113,10 +112,10 @@
 
             <div class="width-full height-fit display-flex flex-column items-start content-center">
 
-                <div class="width-full height-fit display-flex flex-row items-start content-center">
+                <div class="width-full height-fit gap-1 xl-flex-column display-flex flex-row items-start content-center">
 
                     <div
-                        class="width-third pad-1half flex-column gap-1 items-start content-center flex-column display-flex">
+                        class="width-third xl-width-full flex-column gap-1 items-start content-center flex-column display-flex">
                         <span class="text-upper text-color-default font-size-1">Community Intake</span>
                         <h1 class="fraunces-font font-size-3half">Report an Issue</h1>
                         <p class="public-sans-font line-height-2 weight-400 text-color-default font-size-1fourth">
@@ -217,7 +216,7 @@
 
 
                     <div
-                        class="width-70percent display-flex items-start flex-column content-start height-fit pad-1half gap-1">
+                        class="width-70percent xl-width-full display-flex items-start flex-column content-start height-fit gap-1">
 
                         <div
                             class="width-full display-flex items-start content-center flex-column bg-third pad-1half radius-1 border-default gap-1">
@@ -233,7 +232,7 @@
                             <div
                                 class="width-full pad-1 border-width-1 display-flex items-center content-center flex-column bg-third border-dashed-default radius-1">
 
-                                <div class="display-flex items-center content-center flex-column gap-1">
+                                <div class="display-flex xl-width-full items-center content-center flex-column gap-1">
                                     <svg class="text-color-primary font-size-4" width="1em" height="1em"
                                         viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g clip-path="url(#clip0_214_920)">
@@ -258,9 +257,9 @@
                                     <span class="public-sans-font text-color-default">Images, audio voice notes,
                                         inspection video clips (JPG, MP4, M4A)</span>
 
-                                    <div class="width-full display-flex items-center content-center flex-row gap-half">
+                                    <div class="width-full flex-wrap display-flex items-center content-center flex-row gap-half">
                                         <div
-                                            class="border-default pad-1 radius-2 bg-third display-flex items-center content-center gap-1">
+                                            class="border-default md-width-full pad-1 radius-2 bg-third display-flex items-center content-center gap-1">
                                             <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <g clip-path="url(#clip0_214_928)">
@@ -287,7 +286,7 @@
                                             <span>Capture Photo</span>
                                         </div>
                                         <div
-                                            class="border-default pad-1 radius-2 bg-third display-flex items-center content-center gap-1">
+                                            class="border-default md-width-full pad-1 radius-2 bg-third display-flex items-center content-center gap-1">
                                             <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <g clip-path="url(#clip0_214_934)">
@@ -317,7 +316,7 @@
                                             <span>Record Audio Memo</span>
                                         </div>
                                         <div
-                                            class="border-default pad-1 radius-2 bg-third display-flex items-center content-center gap-1">
+                                            class="border-default md-width-full pad-1 radius-2 bg-third display-flex items-center content-center gap-1">
                                             <svg width="1em" height="1em" viewBox="0 0 12 12" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <g clip-path="url(#clip0_214_941)">
@@ -355,11 +354,11 @@
                                         inspect</span>
                                 </div>
                                 <div
-                                    class="display-grid service-category gap-1 width-full pad-y-1 pad-r-1 border-bottom-default">
+                                    class="display-grid content-center items-center service-category gap-1 width-full pad-y-1 border-bottom-default">
 
                                     <div
                                         class="display-flex items-center flex-column content-center width-full gap-half bg-third border-default radius-1">
-                                        <img class="width-full object-fit-cover radius-tl-1 radius-tr-1"
+                                        <img class="width-full height-16 object-fit-cover radius-tl-1 radius-tr-1"
                                             src="assets/images/img1.png" alt="placeholder image">
                                         <div
                                             class="display-flex pad-1 items-center content-between flex-row width-full">
@@ -402,15 +401,16 @@
                                     <div
                                         class="display-flex items-center flex-column content-center width-full gap-half bg-third border-default radius-1">
                                         <div
-                                            class="width-full position-rel card-media bg-empty-video radius-tl-1 radius-tr-1 display-flex items-center flex-column content-center">
-                                            <svg class="font-size-4" width="1em" height="1em" viewBox="0 0 40 40" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
+                                            class="width-full height-16 position-rel card-media bg-empty-video radius-tl-1 radius-tr-1 display-flex items-center flex-column content-center">
+                                            <svg class="font-size-4" width="1em" height="1em" viewBox="0 0 40 40"
+                                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <rect width="40" height="40" rx="20" fill="white" fill-opacity="0.92" />
                                                 <path d="M16 14.6667L25.3333 20.0001L16 25.3334V14.6667Z"
                                                     fill="#13231B" />
                                             </svg>
 
-                                            <span class="video-timer position-abs text-color-white ibm-plex-mono-font weight-400">0:12</span>
+                                            <span
+                                                class="video-timer position-abs text-color-white ibm-plex-mono-font weight-400">0:12</span>
                                         </div>
                                         <div
                                             class="display-flex pad-1 items-center content-between flex-row width-full">
@@ -490,7 +490,7 @@
     </main>
 
     <footer class="width-full display-flex content-center items-center flex-column border-top-default">
-        <div class="width-90percent display-flex content-center items-center flex-row pad-y-2">
+        <div class="footer-items width-90percent display-flex content-center items-center flex-row pad-y-2">
 
             <div class="display-flex content-center items-start flex-column width-half gap-1fourth">
                 <span class="fraunces-font weight-600 font-size-1half">WargaReport</span>
