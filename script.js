@@ -16,6 +16,7 @@ const storageKeys = {
     CREDENTIAL: "credential",
     PROFILE: "profile",
     REPORTS: "reports",
+    ID: "user-id"
 };
 
 /**
@@ -24,8 +25,12 @@ const storageKeys = {
  * @returns {Object|Array}
  */
 function getData(storageKey) {
-    const credential = JSON.parse(localStorage.getItem(storageKey));
-    return credential;
+    try {
+        let credential = JSON.parse(localStorage.getItem(storageKey));
+        return credential;
+    } catch {
+        return undefined;
+    }
 }
 
 /**
@@ -123,14 +128,19 @@ function getUserCredential() {
  * @returns {Boolean}
  */
 function verifyUserCredential(token) {
-    const decrypt = atob(token);
-    const { password } = getData(storageKeys.PROFILE);
-    let restLength = 30 - password.length;
-    if (restLength < 0) {
-        restLength = 0;
+    const decrypt = atob(token || getData(storageKeys.CREDENTIAL)?.token || "");
+    const { userId, email } = getData(storageKeys.ID) || { userId: "" };
+    const userProfile = getData(storageKeys.PROFILE);
+    if (userId && userProfile) {
+        const { password, email: profileMail } = userProfile[userId];
+        let restLength = 30 - password.length;
+        if (restLength < 0) {
+            restLength = 0;
+        }
+        const data = password + "#".repeat(restLength);
+        return data === decrypt && email === profileMail;
     }
-    const data = password + "#".repeat(restLength);
-    return data === decrypt;
+    return false;
 }
 
 function getUserProfileData() {
@@ -141,23 +151,225 @@ function getUserProfileData() {
     return getData(storageKeys.PROFILE);
 }
 
+function signinUser(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const token = createUserCredential(formData.get("password"));
+    if (verifyUserCredential(token)) {
+        savetData(storageKeys.CREDENTIAL, JSON.stringify({ token }));
+        e.currentTarget.closest(".container-modal").classList.toggle("display-flex");
+        e.currentTarget.closest(".container-modal").classList.toggle("display-none");
+    } else {
+        alert("Password atau email salah")
+    };
+
+}
+
 /**
  *
  * @param {SubmitEvent} e
  */
 function registerUser(e) {
     e.preventDefault();
+    const allUsers = getData(storageKeys.PROFILE) || {};
     const formData = new FormData(e.target);
+    const userId = Date.now();
     const registerInfo = {
+        id: userId,
         fullname: formData.get("fullname"),
         email: formData.get("email"),
         phone: formData.get("phone"),
         nik: formData.get("nik"),
         password: formData.get("password"),
     };
-    savetData(storageKeys.CREDENTIAL, JSON.stringify(registerInfo));
+    e.target.reset();
+    savetData(storageKeys.ID, JSON.stringify({ userId, email: registerInfo.email }));
+    savetData(storageKeys.PROFILE, JSON.stringify({ ...allUsers, [userId]: registerInfo }));
 }
 
+function UserDropdownSubmenu({ fullname = "", email = "" } = {}) {
+    return createElement(
+        "div",
+        {
+            class: "position-abs width-20 bg-third border-default radius-1 height-fit nav-profile-submenu display-none gap-half items-center content-center flex-column",
+        },
+        "",
+        [
+            // Info user
+            createElement(
+                "div",
+                { class: "width-full pad-1 display-flex items-start content-between flex-column gap-half" },
+                "",
+                [
+                    createElement("span", { class: "public-sans-font weight-600 font-size-1" }, fullname),
+                    createElement("span", { class: "ibm-plex-mono-font weight-400 text-color-default" }, email),
+                ],
+            ),
+
+            // My Filed Reports
+            createElement(
+                "div",
+                { class: "width-full pad-1 items-center content-center display-flex border-top-default" },
+                "",
+                [
+                    createElement(
+                        "button",
+                        {
+                            type: "button",
+                            class: "border-none font-size-1 bg-transparent public-sans-font width-full text-color-default outline-none display-flex items-center content-start flex-row gap-half",
+                        },
+                        "",
+                        [
+                            svgIcon("0 0 12 12", [
+                                createElement("g", { "clip-path": "url(#clip0_601_272)" }, "", [
+                                    strokePath(
+                                        "M10 10.5V9.5C10 8.96957 9.78929 8.46086 9.41421 8.08579C9.03914 7.71071 8.53043 7.5 8 7.5H4C3.46957 7.5 2.96086 7.71071 2.58579 8.08579C2.21071 8.46086 2 8.96957 2 9.5V10.5",
+                                        "1",
+                                    ),
+                                    strokePath(
+                                        "M8 3.5C8 4.60457 7.10457 5.5 6 5.5C4.89543 5.5 4 4.60457 4 3.5C4 2.39543 4.89543 1.5 6 1.5C7.10457 1.5 8 2.39543 8 3.5Z",
+                                        "1",
+                                    ),
+                                ]),
+                                createElement("defs", {}, "", [
+                                    createElement("clipPath", { id: "clip0_601_272" }, "", [
+                                        createElement("rect", { width: "12", height: "12", fill: "white" }),
+                                    ]),
+                                ]),
+                            ]),
+                            createElement("span", {}, "My Filed Reports"),
+                        ],
+                    ),
+                ],
+            ),
+
+            // Sign Out
+            createElement(
+                "div",
+                { class: "width-full pad-1 items-center content-center display-flex border-top-default" },
+                "",
+                [
+                    createElement(
+                        "button",
+                        {
+                            type: "button",
+                            class: "border-none font-size-1 bg-transparent public-sans-font width-full text-color-default outline-none display-flex items-center content-start flex-row gap-half",
+                        },
+                        "",
+                        [
+                            svgIcon(
+                                "0 0 12 12",
+                                [
+                                    createElement("g", { "clip-path": "url(#clip0_601_279)" }, "", [
+                                        strokePath(
+                                            "M4.5 10.5H2.5C2.23478 10.5 1.98043 10.3946 1.79289 10.2071C1.60536 10.0196 1.5 9.76522 1.5 9.5V2.5C1.5 2.23478 1.60536 1.98043 1.79289 1.79289C1.98043 1.60536 2.23478 1.5 2.5 1.5H4.5",
+                                            "1",
+                                        ),
+                                        strokePath("M8 8.5L10.5 6L8 3.5", "1"),
+                                        strokePath("M10.5 6H4.5", "1"),
+                                    ]),
+                                    createElement("defs", {}, "", [
+                                        createElement("clipPath", { id: "clip0_601_279" }, "", [
+                                            createElement("rect", { width: "12", height: "12", fill: "white" }),
+                                        ]),
+                                    ]),
+                                ],
+                                { class: "text-color-red" },
+                            ),
+                            createElement(
+                                "span",
+                                { class: "text-color-red public-sans-font weight-400" },
+                                "Sign Out",
+                            ),
+                        ],
+                        {
+                            click: () => {
+                                localStorage.removeItem(storageKeys.CREDENTIAL);
+                                location.reload();
+                            },
+                        },
+                    ),
+                ],
+            ),
+        ],
+    );
+}
+
+/**
+ * @param {{ fullname: string, email: string }} user
+ */
+function UserDropdownMenuComponent({ fullname = "", email = "" } = {}) {
+    const dropdownMenu = UserDropdownSubmenu({ fullname, email });
+    return createElement(
+        "div",
+        {
+            class: "border-default position-rel select-none bg-third radius-2 pad-half display-flex items-center content-center gap-1",
+        },
+        "",
+        [
+            // Avatar
+            createElement(
+                "div",
+                {
+                    class: "bg-secondary public-sans-font weight-600 font-size-1 text-color-primary pad-half radius-2",
+                },
+                fullname
+                    .split(" ")
+                    .map((name) => name[0])
+                    .join("")
+                    .toUpperCase(),
+            ),
+
+            // Nama & role
+            createElement(
+                "div",
+                { class: "display-flex items-start content-center flex-column" },
+                "",
+                [
+                    createElement("span", { class: "public-sans-font weight-600 font-size-1" }, fullname),
+                    createElement("span", { class: "ibm-plex-mono-font text-color-primary" }, "Citizen"),
+                ],
+            ),
+
+            // Chevron
+            createElement(
+                "div",
+                { class: "display-flex items-center height-full content-center flex-column" },
+                "",
+                [
+                    svgIcon(
+                        "0 0 12 12",
+                        [
+                            createElement("g", { "clip-path": "url(#clip0_214_711)" }, "", [
+                                createElement("path", {
+                                    d: "M3 4.5L6 7.5L9 4.5",
+                                    "stroke-linecap": "round",
+                                    "stroke-linejoin": "round",
+                                    stroke: "#84928A",
+                                }),
+                            ]),
+                            createElement("defs", {}, "", [
+                                createElement("clipPath", { id: "clip0_214_711" }, "", [
+                                    createElement("rect", { width: "12", height: "12", fill: "white" }),
+                                ]),
+                            ]),
+                        ],
+                        { class: "font-size-1fourth" },
+                    ),
+                ],
+            ),
+
+            // Submenu
+            dropdownMenu
+        ],
+        {
+            click() {
+                dropdownMenu.classList.toggle("display-none");
+                dropdownMenu.classList.toggle("display-flex");
+            }
+        }
+    );
+}
 
 function FormSigninComponent() {
     return createElement(
@@ -317,12 +529,7 @@ function FormSigninComponent() {
         ],
         {
             submit: (e) => {
-                e.preventDefault();
-                const formData = new FormData(e.currentTarget);
-                if (validateUser(formData.get("email"), formData.get("password"))) {
-                    e.currentTarget.closest(".container-modal").classList.toggle("display-flex");
-                    e.currentTarget.closest(".container-modal").classList.toggle("display-none");
-                }
+                signinUser(e);
             },
         },
     );
@@ -632,8 +839,6 @@ function FormRegisterComponent() {
         {
             submit: (e) => {
                 registerUser(e);
-                e.currentTarget.closest(".container-modal").classList.toggle("display-flex");
-                e.currentTarget.closest(".container-modal").classList.toggle("display-none");
             },
         },
     );
@@ -679,7 +884,7 @@ function ModalComponentLoginRegister() {
                                 e.target.classList.add("bg-primary");
                                 e.target.classList.add("text-color-white");
                                 e.target.classList.add("border-none");
-                                
+
                                 t.classList.add("bg-main-color");
                                 t.classList.add("border-default");
                                 t.classList.add("outline-none");
@@ -715,7 +920,7 @@ function ModalComponentLoginRegister() {
                                 e.target.classList.add("bg-primary");
                                 e.target.classList.add("text-color-white");
                                 e.target.classList.add("border-none");
-                                
+
                                 t.classList.add("bg-main-color");
                                 t.classList.add("border-default");
                                 t.classList.add("outline-none");

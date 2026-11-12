@@ -57,6 +57,8 @@ body,html{
     font-style:normal;
 }
 
+.select-none{user-select: none;}
+
 .display-flex{display:flex;}
 .display-grid{display:grid;}
 .display-none{display:none;}
