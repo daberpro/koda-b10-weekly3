@@ -38,8 +38,12 @@ function getData(storageKey) {
  * @param {string} storageKey
  * @param {string} data
  */
-function savetData(storageKey, data) {
+function saveData(storageKey, data) {
     localStorage.setItem(storageKey, data);
+}
+
+function removeData(storageKey){
+    localStorage.removeItem(storageKey);
 }
 
 /**
@@ -127,25 +131,26 @@ function getUserCredential() {
  * @param {string} token
  * @returns {Boolean}
  */
-function verifyUserCredential(token) {
+function verifyUserCredential({token, inputMail}) {
     const decrypt = atob(token || getData(storageKeys.CREDENTIAL)?.token || "");
-    const { userId, email } = getData(storageKeys.ID) || { userId: "" };
+    const { email } = getData(storageKeys.ID) || { email: "" };
     const userProfile = getData(storageKeys.PROFILE);
-    if (userId && userProfile) {
-        const { password, email: profileMail } = userProfile[userId];
+    if ((email && userProfile) || (inputMail && userProfile)) {
+        const { password, email: profileMail } = userProfile[email || inputMail];
         let restLength = 30 - password.length;
         if (restLength < 0) {
             restLength = 0;
         }
         const data = password + "#".repeat(restLength);
-        return data === decrypt && email === profileMail;
+        return data === decrypt && (email === profileMail || inputMail === profileMail);
     }
     return false;
 }
 
+// TODO HARUS DI FIX
 function getUserProfileData() {
     const credential = getUserCredential();
-    if (!verifyUserCredential(credential)) {
+    if (!verifyUserCredential({token: credential})) {
         return {};
     }
     return getData(storageKeys.PROFILE);
@@ -155,12 +160,20 @@ function signinUser(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
     const token = createUserCredential(formData.get("password"));
-    if (verifyUserCredential(token)) {
-        savetData(storageKeys.CREDENTIAL, JSON.stringify({ token }));
+    
+    if(!getData(storageKeys.CREDENTIAL)){
+        removeData(storageKeys.ID);
+    }
+    
+    if (verifyUserCredential({token, inputMail: formData.get("email")})) {
+        saveData(storageKeys.CREDENTIAL, JSON.stringify({ token }));
+        saveData(storageKeys.ID, JSON.stringify({ email: formData.get("email") }));
         e.currentTarget.closest(".container-modal").classList.toggle("display-flex");
         e.currentTarget.closest(".container-modal").classList.toggle("display-none");
-    } else {
-        alert("Password atau email salah")
+        location.replace("citizen-account-flow-profile.html");
+    }else{
+        removeData(storageKeys.CREDENTIAL);
+        alert("Password atau email salah");
     };
 
 }
@@ -183,8 +196,8 @@ function registerUser(e) {
         password: formData.get("password"),
     };
     e.target.reset();
-    savetData(storageKeys.ID, JSON.stringify({ userId, email: registerInfo.email }));
-    savetData(storageKeys.PROFILE, JSON.stringify({ ...allUsers, [userId]: registerInfo }));
+    saveData(storageKeys.ID, JSON.stringify({ email: registerInfo.email }));
+    saveData(storageKeys.PROFILE, JSON.stringify({ ...allUsers, [registerInfo.email]: registerInfo }));
 }
 
 function UserDropdownSubmenu({ fullname = "", email = "" } = {}) {
@@ -253,7 +266,7 @@ function UserDropdownSubmenu({ fullname = "", email = "" } = {}) {
                         "button",
                         {
                             type: "button",
-                            class: "border-none font-size-1 bg-transparent public-sans-font width-full text-color-default outline-none display-flex items-center content-start flex-row gap-half",
+                            class: "border-none cursor-pointer font-size-1 bg-transparent public-sans-font width-full text-color-default outline-none display-flex items-center content-start flex-row gap-half",
                         },
                         "",
                         [
@@ -284,7 +297,8 @@ function UserDropdownSubmenu({ fullname = "", email = "" } = {}) {
                         ],
                         {
                             click: () => {
-                                localStorage.removeItem(storageKeys.CREDENTIAL);
+                                removeData(storageKeys.ID);
+                                removeData(storageKeys.CREDENTIAL);
                                 location.reload();
                             },
                         },

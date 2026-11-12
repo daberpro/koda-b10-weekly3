@@ -87,9 +87,9 @@
             modalSigninRegister.classList.toggle("display-none");
         };
 
-        if (verifyUserCredential()) {
-            const { userId } = getData(storageKeys.ID);
-            const { [userId]: { fullname, email } } = getData(storageKeys.PROFILE);
+        if (verifyUserCredential({})) {
+            const { email: emailId } = getData(storageKeys.ID);
+            const { [emailId]: { fullname, email } } = getData(storageKeys.PROFILE);
             signinButton.classList.toggle("display-flex");
             signinButton.classList.toggle("display-none");
             const userDropdownMenu = UserDropdownMenuComponent({ fullname, email });
