@@ -36,7 +36,6 @@ body,html{
     padding:0;
     box-sizing:border-box;
     font-family:sans-serif;
-    /* border: 1px solid rgba(255,0,0,0.25); */
 }
 
 .fraunces-font{
@@ -334,6 +333,8 @@ body,html{
 .line-height-2{line-height: 2rem;}
 .line-height-2half{line-height: 2.5rem;}
 
+.left-0{left: 0;}
+
 .radius-half{border-radius: 0.5rem;}
 .radius-1{border-radius: 1rem;}
 .radius-1half{border-radius: 1.5rem;}
@@ -402,18 +403,43 @@ body,html{
     right: 1rem;
 }
 
+.overflow-y-visible{
+    overflow-y: visible;
+}
+
+.overflow-y-hidden{
+    overflow-y: hidden;
+}
+
 /* XS - MD */
 @media (width >= 0px) and (width < 992px) {
 
+    .navbar-overflow-y-hidden {
+        overflow-y: hidden;
+    }
+
+    .navbar-overflow-y-visible{
+        overflow-y: visible;
+    }
+
     /* NAVBAR */
     nav.navbar {
-        padding: 1rem;
-        height: fit-content;
+        align-items: start;
     }
-    nav.navbar > div{flex-direction: column;}
+    nav.navbar > div{flex-direction: column;height: fit-content;}
     nav.navbar > div > *{
         width: 100%;
         justify-content: start;
+    }
+    nav.navbar > div > .brand-container {
+        width: 100%;
+        justify-content: space-between;
+    }
+    nav.navbar > div > .brand-container > a {
+        height: 100%;
+    }
+    nav.navbar > div > .brand-container > button {
+        display: block;
     }
     nav.navbar > div > .navbar-menu {
         justify-content: start;
@@ -422,6 +448,7 @@ body,html{
         border-bottom: 1px solid var(--border-color);
         padding: 1rem 0px;
         margin: 1rem 0px;
+        height: fit-content;
     }
     nav.navbar > div > .navbar-menu > div {
         flex-direction: column;
@@ -430,6 +457,8 @@ body,html{
     nav.navbar > div > .navbar-menu > div > a{
         width: 100%;
     }
+
+
 
     /* END NAVBAR */
 
@@ -503,6 +532,7 @@ body,html{
     .xl-flex-column{flex-direction: column;}
     .xl-width-full{width: 100%;}
     .xl-pad-1{padding: 1rem;}
+    .xl-pad-y-1{padding: 1rem;}
     .xl-content-start{justify-content: start;}
     .xl-height-fit{height: fit-content;}
     .xl-items-start{align-items: start;}

@@ -120,14 +120,6 @@ function createUserCredential(password) {
 
 /**
  *
- * @returns {Object}
- */
-function getUserCredential() {
-    return getData(storageKeys.CREDENTIAL);
-}
-
-/**
- *
  * @param {string} token
  * @returns {Boolean}
  */
@@ -147,24 +139,15 @@ function verifyUserCredential({token, inputMail}) {
     return false;
 }
 
-// TODO HARUS DI FIX
-function getUserProfileData() {
-    const credential = getUserCredential();
-    if (!verifyUserCredential({token: credential})) {
-        return {};
-    }
-    return getData(storageKeys.PROFILE);
-}
-
 function signinUser(e) {
     e.preventDefault();
     const formData = new FormData(e.target);
     const token = createUserCredential(formData.get("password"));
-    
+
     if(!getData(storageKeys.CREDENTIAL)){
         removeData(storageKeys.ID);
     }
-    
+
     if (verifyUserCredential({token, inputMail: formData.get("email")})) {
         saveData(storageKeys.CREDENTIAL, JSON.stringify({ token }));
         saveData(storageKeys.ID, JSON.stringify({ email: formData.get("email") }));
@@ -200,11 +183,47 @@ function registerUser(e) {
     saveData(storageKeys.PROFILE, JSON.stringify({ ...allUsers, [registerInfo.email]: registerInfo }));
 }
 
+function renderUserData({
+    fullnameSelectors = [""],
+    emailSelectors = [""],
+    phoneSelectors = [""],
+    nikSelectors = [""],
+    initialSelectors = [""]
+}) {
+    if (!verifyUserCredential({})) {
+        return;
+    }
+
+    const { email: emailId } = getData(storageKeys.ID);
+    const { [emailId]: { fullname, email, phone, nik } } = getData(storageKeys.PROFILE);
+
+    const renderContentToTarget = (selectors, content) => {
+        selectors.forEach((selector) => {
+            const allTargets = [...(document.querySelectorAll(selector) || [])];
+            allTargets.forEach((node) => {
+                if (node instanceof HTMLInputElement) {
+                    node.value = content;
+                } else {
+                    node.textContent = content;
+                }
+            });
+        });
+    }
+
+
+    renderContentToTarget(fullnameSelectors, fullname);
+    renderContentToTarget(emailSelectors, email);
+    renderContentToTarget(phoneSelectors, phone);
+    renderContentToTarget(nikSelectors, nik);
+    renderContentToTarget(initialSelectors, fullname.split(" ").map(d => d[0]).join());
+
+}
+
 function UserDropdownSubmenu({ fullname = "", email = "" } = {}) {
     return createElement(
         "div",
         {
-            class: "position-abs width-20 bg-third border-default radius-1 height-fit nav-profile-submenu display-none gap-half items-center content-center flex-column",
+            class: "position-abs width-20 left-0 bg-third border-default radius-1 height-fit nav-profile-submenu display-none gap-half items-center content-center flex-column",
         },
         "",
         [
@@ -510,8 +529,6 @@ function FormSigninComponent() {
                             ),
                         ],
                         {
-                            // Toggle show/hide password lewat event delegation di wrapper,
-                            // supaya tidak perlu variabel untuk input maupun ikon mata.
                             click: (e) => {
                                 const icon = e.target.closest("svg");
                                 const wrapper = e.currentTarget;
@@ -964,7 +981,7 @@ function ModalComponentLoginRegister() {
             createElement(
                 "div",
                 {
-                    class: "radius-1 md-width-90percent md-height-90percent md-overflow-y-scroll md-content-start modal-form border-default display-flex items-center content-center flex-column",
+                    class: "radius-1 md-width-90percent md-height-90percent md-overflow-y-scroll md-content-start modal-form display-flex items-center content-center flex-column",
                 },
                 "",
                 [
